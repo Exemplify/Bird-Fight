@@ -5,7 +5,7 @@ using UnityEngine;
 
 //Primary controller for the bird. Contains states for if it has the letter, etc.
 public class BirdController : MonoBehaviour {
-
+    public Players playerNumber;
     public Collider thisCollider; //Reference to this bird's collider
     public float movementPowerX; //The force of horizontal movement applied by each wing
     public float movementPowerY;//The force of vertical movement applied by each wing
@@ -57,12 +57,12 @@ public class BirdController : MonoBehaviour {
             {
                 Debug.Log("Hard hitting stuff!");
                 timeLeft = stunTime;
-
-                if (coll.gameObject.GetComponent<BirdController>().hasMail()) //Does it have the mail?
+                if(GetComponent<Rigidbody>().velocity.magnitude> coll.gameObject.GetComponent<Rigidbody>().velocity.magnitude)
                 {
-                    coll.gameObject.GetComponent<BirdController>().dropMail();
-                    coll.gameObject.transform.parent = null;
-                    Debug.Log("Bitch had my mail!");
+                    if (coll.gameObject.GetComponent<BirdController>().hasMail()) //Does it have the mail?
+                    {
+                        coll.gameObject.GetComponent<BirdController>().dropMail();
+                        Debug.Log("Bitch had my mail!");
 
                     coll.gameObject.GetComponent<BirdController>().RightFoot.GetComponent<FootScript>().timeLeft = 3;
                     coll.gameObject.GetComponent<BirdController>().LeftFoot.GetComponent<FootScript>().timeLeft = 3;
