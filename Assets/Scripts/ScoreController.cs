@@ -5,16 +5,22 @@ using UnityEngine;
 
 public class ScoreController : MonoBehaviour {
 
-	private static List<int> _score= new List<int>(4);
+	private List<int> _score= new List<int>(4);
 
-	public static List<int> getScores()
+	public List<int> getScores()
 	{
 		return _score;
 	}
 
-	public static void AddScore(Players player)
+	public void AddScore(Players player)
 	{
 		_score[(int)player]++;
-	}
+
+        if (_score[(int)player] > 2)
+        {
+            GetComponent<GameController>().winningPlayerNum = (int)player+1;
+            GetComponent<GameController>().gamestate = Gamestate.Gameover;
+        }        
+    }
 
 }

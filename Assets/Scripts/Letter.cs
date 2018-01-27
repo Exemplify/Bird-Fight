@@ -22,14 +22,16 @@ public class Letter : MonoBehaviour
 	{
 		Owner = newOwner;
 		hasOwner = true;
-		GetComponent<Rigidbody> ().detectCollisions = false;
-		GetComponent<Collider> ().enabled = false;
-	}
+        GetComponent<Rigidbody>().useGravity = false;
+        //GetComponent<Collider> ().enabled = false;
+        GetComponent<Collider>().isTrigger = true;
+    }
 
 	public void Dropped()
 	{
 		hasOwner = false;
-		GetComponent<Rigidbody> ().detectCollisions = true;
-		GetComponent<Collider> ().enabled = true;
-	}
+        GetComponent<Rigidbody>().useGravity = true;
+        //GetComponent<Collider> ().enabled = true;
+        GetComponent<Collider>().isTrigger = false;
+    }
 }

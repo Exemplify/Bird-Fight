@@ -6,15 +6,13 @@ public class GameController : MonoBehaviour {
 
     public BirdController[] birds;
 
-    public enum Gamestate { Playing, Reset, Gameover};
-
     public LetterController letter;
 
-    Gamestate gamestate = Gamestate.Reset;
+    public Gamestate gamestate = Gamestate.Reset;
 
     private float timerLevelStart;
     private float levelStartPeriod;
-
+    public int winningPlayerNum;
     void Start ()
     {
 		
@@ -42,7 +40,7 @@ public class GameController : MonoBehaviour {
         }
         else if (gamestate == Gamestate.Gameover)
         {
-
-        }
+            //WIN SCREEN
+        }        
 	}
 }
