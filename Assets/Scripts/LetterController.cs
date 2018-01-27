@@ -2,20 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LetterController : MonoBehaviour {
+public class LetterController : MonoBehaviour 
+{
+	public 	GameObject 	LetterPrefab;
+	public 	Vector3 	StartPosition;
+	private GameObject 	LetterCurrent;
 
-	// Use this for initialization
-	void Start () {
-		
+	void Start () 
+	{
+		LetterCurrent = Instantiate (LetterPrefab, StartPosition, Quaternion.identity);
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+
+	public void LetterRespawn()
+	{
+		LetterCurrent.SetActive(false);
+		LetterCurrent.transform.position = StartPosition;
+		LetterCurrent.SetActive(true);
 	}
 
-    public void ResetLetter()
-    {
-
-    }
+	public void LetterColour(Color newColour)
+	{
+		LetterCurrent.GetComponent<Renderer>().material.color = newColour;
+	}
 }
