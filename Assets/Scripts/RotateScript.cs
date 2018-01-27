@@ -18,7 +18,7 @@ public class RotateScript : MonoBehaviour {
         Body.transform.Rotate(new Vector3(0, 0, 1), RotationAmount);
 
         //print(Body.transform.rotation.eulerAngles.z);
-        print("Rotation: " + RotationAmount);
+        //print("Rotation: " + RotationAmount);
 
         if (RotationAmount < 0)
         {

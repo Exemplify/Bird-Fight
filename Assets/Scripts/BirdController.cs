@@ -21,12 +21,12 @@ public class BirdController : MonoBehaviour {
     private bool hasLetter; //If this bird has the letter
     private GameObject letter; //The letter game object
     private float timeLeft; //Stun time remaining
-    private bool isStunned; //Status effect for being unable to move
+    public bool isStunned; //Status effect for being unable to move
 
     // Use this for initialization
     void Start () {
+        isStunned = false;
         thisCollider = GetComponent<Collider>();
-        timeLeft = stunTime;
     }
 	
 	// Update is called once per frame
@@ -53,6 +53,8 @@ public class BirdController : MonoBehaviour {
             if (coll.relativeVelocity.magnitude > transferMagnitude) //If so, did you hit it hard enough to get the letter?
             {
                 Debug.Log("Hard hitting stuff!");
+                timeLeft = stunTime;
+
                 if (coll.gameObject.GetComponent<BirdController>().hasMail()) //Does it have the mail?
                 {
                     coll.gameObject.GetComponent<BirdController>().dropMail();
