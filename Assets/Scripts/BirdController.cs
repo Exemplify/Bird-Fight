@@ -5,7 +5,7 @@ using UnityEngine;
 
 //Primary controller for the bird. Contains states for if it has the letter, etc.
 public class BirdController : MonoBehaviour {
-
+    public Players playerNumber;
     public Collider thisCollider; //Reference to this bird's collider
     public float movementPowerX; //The force of horizontal movement applied by each wing
     public float movementPowerY;//The force of vertical movement applied by each wing
