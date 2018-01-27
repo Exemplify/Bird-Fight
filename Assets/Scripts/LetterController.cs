@@ -10,8 +10,7 @@ public class LetterController : MonoBehaviour
 
     void Start()
     {
-        LetterCurrent = Instantiate(LetterPrefab, StartPosition, Quaternion.identity);
-        LetterCurrent.GetComponent<Renderer>().material.color = Color.yellow;
+        LetterSpawn();
     }
 
     public void LetterRespawn()
@@ -25,5 +24,11 @@ public class LetterController : MonoBehaviour
     public void LetterColour(Color newColour)
     {
         LetterCurrent.GetComponent<Renderer>().material.color = newColour;
+    }
+
+    public void LetterSpawn()
+    {
+        LetterCurrent = Instantiate(LetterPrefab, StartPosition, Quaternion.identity);
+        LetterCurrent.GetComponent<Renderer>().material.color = Color.yellow;
     }
 }

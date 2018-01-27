@@ -45,11 +45,14 @@ TagManager:
   - name: Background
     uniqueID: 485604209
     locked: 0
-  - name: Player
-    uniqueID: 2117054195
-    locked: 0
   - name: Mailbox
     uniqueID: 2785217531
+    locked: 0
+  - name: letter
+    uniqueID: 3332703655
+    locked: 0
+  - name: Player
+    uniqueID: 2117054195
     locked: 0
   - name: poop
     uniqueID: 3133443455
