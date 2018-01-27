@@ -54,15 +54,18 @@ public class BirdController : MonoBehaviour {
             {
                 Debug.Log("Hard hitting stuff!");
                 timeLeft = stunTime;
-
-                if (coll.gameObject.GetComponent<BirdController>().hasMail()) //Does it have the mail?
+                if(GetComponent<Rigidbody>().velocity.magnitude> coll.gameObject.GetComponent<Rigidbody>().velocity.magnitude)
                 {
-                    coll.gameObject.GetComponent<BirdController>().dropMail();
-                    Debug.Log("Bitch had my mail!");
-                }
-                coll.gameObject.GetComponent<BirdController>().applyStun();
-                Vector2 knockback = -GetComponent<Rigidbody>().velocity.normalized * knockbackForce; //Calculate knockback
-                coll.gameObject.GetComponent<Rigidbody>().AddForce(knockback, ForceMode.Impulse); //Change from impulse to force to test effects
+                    if (coll.gameObject.GetComponent<BirdController>().hasMail()) //Does it have the mail?
+                    {
+                        coll.gameObject.GetComponent<BirdController>().dropMail();
+                        Debug.Log("Bitch had my mail!");
+                    }
+                    coll.gameObject.GetComponent<BirdController>().applyStun();
+                    Vector3 knockback = -GetComponent<Rigidbody>().velocity.normalized * knockbackForce; //Calculate knockback
+                    coll.gameObject.GetComponent<Rigidbody>().AddForce(knockback, ForceMode.Impulse); //Change from impulse to force to test effects
+                }            
+                
             }            
         }   
         if (coll.gameObject.tag == "Mail")
