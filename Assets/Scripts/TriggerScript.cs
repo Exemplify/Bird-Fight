@@ -31,7 +31,7 @@ public class TriggerScript : MonoBehaviour {
                 Vector3 offset = WingAnchor.transform.parent.position;
                 offset += new Vector3(0.5f, 0, 0);
 
-                WingAnchor.transform.rotation = Quaternion.Euler(0, 0, BodyRotation - 180 - 120 * (-0.5f + TriggerValue));
+                WingAnchor.transform.rotation = Quaternion.Euler(0, 0, BodyRotation - 180 - 60 * (-0.5f + TriggerValue));
 
                 if (LastTriggerValue + 0.1 < TriggerValue)
                 {
@@ -44,7 +44,7 @@ public class TriggerScript : MonoBehaviour {
             }
             else
             {
-                WingAnchor.transform.rotation = Quaternion.Euler(0, 0, BodyRotation + 120 * (-0.5f + TriggerValue));
+                WingAnchor.transform.rotation = Quaternion.Euler(0, 0, BodyRotation + 60 * (-0.5f + TriggerValue));
                 if (LastTriggerValue + 0.1 < TriggerValue)
                 {
                     //WingAnchor.transform.parent.GetComponent<Rigidbody>().AddForceAtPosition(new Vector3(2, 30, 0), Body.transform.position + new Vector3(-0.5f, 0, 0));
