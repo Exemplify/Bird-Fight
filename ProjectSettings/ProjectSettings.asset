@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 14
-  productGUID: 44e54b53dd6234d4b8b5c62138608d45
+  productGUID: 861c6b0dc2852d3439b800699bdbbf79
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   defaultScreenOrientation: 4
@@ -12,7 +12,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: Pigeon Fight
+  productName: Controller test
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -558,14 +558,14 @@ PlayerSettings:
   apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: Pigeon Fight
+  metroPackageName: Controller test
   metroPackageVersion: 
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
   metroCertificateIssuer: 
   metroCertificateNotAfter: 0000000000000000
-  metroApplicationDescription: Pigeon Fight
+  metroApplicationDescription: Controller test
   wsaImages: {}
   metroTileShortName: 
   metroCommandLineArgsFile: 
@@ -634,9 +634,9 @@ PlayerSettings:
     UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: c45e4815-4412-44fd-9846-740fd7879cf2
-  projectName: Pigeon Fight
-  organizationId: timothy-3474595
+  cloudProjectId: 13601394-fd78-4484-82e8-acffa5ba266d
+  projectName: Controller test
+  organizationId: james-gibson-faeb4527-12fc-4b64-885c-fdcab1dde18f
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
