@@ -29,7 +29,7 @@ public class RotateScript : MonoBehaviour {
             IncrementClockwise(0.1f);
         }
 
-        if (((Body.transform.eulerAngles.z < 2 && Body.transform.eulerAngles.z > -2) || Body.transform.eulerAngles.z > 358) && RotationAmount < 2 && RotationAmount > -2)
+        if (((Body.transform.eulerAngles.z < 1 && Body.transform.eulerAngles.z > -1) || Body.transform.eulerAngles.z > 359) && RotationAmount < 2 && RotationAmount > -2)
         {
             //print("Bracket: " + Body.transform.rotation.eulerAngles.z);
             Body.transform.rotation.eulerAngles.Set(0, 0, 0);

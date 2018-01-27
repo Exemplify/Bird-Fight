@@ -15,6 +15,7 @@ public class BirdController : MonoBehaviour {
     public bool IsPlaying=false;
     public GameObject LeftFoot;
     public GameObject RightFoot;
+    public int PlayerNumber;
 
 
     //Shit-related activities
@@ -43,6 +44,12 @@ public class BirdController : MonoBehaviour {
                 {
                     isStunned = false;
                 }
+            }
+
+            if(Input.GetButtonDown("P"+PlayerNumber+"Shit"))
+            {
+                print("Shit");
+                Shit();
             }
         }        
 	}
@@ -141,7 +148,8 @@ public class BirdController : MonoBehaviour {
     //Drop the bomb
     public void Shit()
     {
-        shit = Instantiate(shitPrefab, this.transform.position, Quaternion.identity);
+        shit = Instantiate(shitPrefab, this.transform.position + new Vector3(0,-2, 0), Quaternion.identity);
         shit.GetComponent<Renderer>().material.color = Color.white;
+        shit.GetComponent<Rigidbody>().AddForce(transform.up * -30, ForceMode.Impulse);
     }
 }
