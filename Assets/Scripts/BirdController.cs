@@ -57,32 +57,37 @@ public class BirdController : MonoBehaviour {
             {
                 Debug.Log("Hard hitting stuff!");
                 timeLeft = stunTime;
-                if(GetComponent<Rigidbody>().velocity.magnitude> coll.gameObject.GetComponent<Rigidbody>().velocity.magnitude)
+                if (GetComponent<Rigidbody>().velocity.magnitude > coll.gameObject.GetComponent<Rigidbody>().velocity.magnitude)
                 {
                     if (coll.gameObject.GetComponent<BirdController>().hasMail()) //Does it have the mail?
                     {
                         coll.gameObject.GetComponent<BirdController>().dropMail();
                         Debug.Log("Bitch had my mail!");
 
-                    coll.gameObject.GetComponent<BirdController>().RightFoot.GetComponent<FootScript>().timeLeft = 3;
-                    coll.gameObject.GetComponent<BirdController>().LeftFoot.GetComponent<FootScript>().timeLeft = 3;
+                        coll.gameObject.GetComponent<BirdController>().RightFoot.GetComponent<FootScript>().AttachedLetter = null;
+                        coll.gameObject.GetComponent<BirdController>().LeftFoot.GetComponent<FootScript>().AttachedLetter = null;
 
-                    if (Vector3.Distance(letter.transform.position, LeftFoot.transform.position) < Vector3.Distance(letter.transform.position, RightFoot.transform.position))
-                    {
-                        letter.GetComponent<Rigidbody>().AddForce((LeftFoot.transform.position - letter.transform.position).normalized * 20);
+                        coll.gameObject.GetComponent<BirdController>().RightFoot.GetComponent<FootScript>().timeLeft = 3;
+                        coll.gameObject.GetComponent<BirdController>().LeftFoot.GetComponent<FootScript>().timeLeft = 3;
+
+                        letter = coll.gameObject.GetComponent<BirdController>().letter;
+
+                        if (Vector3.Distance(letter.transform.position, LeftFoot.transform.position) < Vector3.Distance(letter.transform.position, RightFoot.transform.position))
+                        {
+                            letter.GetComponent<Rigidbody>().AddForce((LeftFoot.transform.position - letter.transform.position).normalized * 20);
+                        }
+                        else
+                        {
+                            letter.GetComponent<Rigidbody>().AddForce((RightFoot.transform.position - letter.transform.position).normalized * 20);
+                        }
                     }
-                    else
-                    {
-                        letter.GetComponent<Rigidbody>().AddForce((RightFoot.transform.position - letter.transform.position).normalized * 20);
-                    }
+                    coll.gameObject.GetComponent<BirdController>().applyStun();
+                    Vector2 knockback = -GetComponent<Rigidbody>().velocity.normalized * knockbackForce; //Calculate knockback
+                    coll.gameObject.GetComponent<Rigidbody>().AddForce(knockback, ForceMode.Impulse); //Change from impulse to force to test effects
                 }
-                coll.gameObject.GetComponent<BirdController>().applyStun();
-                Vector2 knockback = -GetComponent<Rigidbody>().velocity.normalized * knockbackForce; //Calculate knockback
-                coll.gameObject.GetComponent<Rigidbody>().AddForce(knockback, ForceMode.Impulse); //Change from impulse to force to test effects
-            }            
-        }   
-        
+            }
 
+        }
     }
 
     //Check if this bird has the letter
