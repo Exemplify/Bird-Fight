@@ -6,7 +6,7 @@ using UnityEngine;
 //Primary controller for the bird. Contains states for if it has the letter, etc.
 public class BirdController : MonoBehaviour {
 
-    public Collider2D thisCollider; //Reference to this bird's collider
+    public Collider thisCollider; //Reference to this bird's collider
     public float movementPowerX; //The force of horizontal movement applied by each wing
     public float movementPowerY;//The force of vertical movement applied by each wing
     public float transferMagnitude; //The power threshold for releasing the letter
@@ -21,7 +21,7 @@ public class BirdController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        thisCollider = GetComponent<Collider2D>();
+        thisCollider = GetComponent<Collider>();
         timeLeft = stunTime;
     }
 	
@@ -63,7 +63,7 @@ public class BirdController : MonoBehaviour {
         {
             this.hasLetter = true;
             letter = coll.gameObject;
-            //letter.GetComponent<Letter>().setOwner(gameObject);
+            //letter.GetComponent<Letter>().setOwner(gameObject);            
         }     
 
     }
@@ -77,7 +77,7 @@ public class BirdController : MonoBehaviour {
     public void dropMail()
     {
         hasLetter = false;
-        //letter.GetComponent<Letter>().hasOwner = false;
+        //letter.GetComponent<Letter>().Dropped();
     }
 
     //Apply the stun
@@ -93,7 +93,7 @@ public class BirdController : MonoBehaviour {
         if (!isStunned)
         {
             //GetComponent<Rigidbody2D>().AddForce(new Vector2(movementPowerX, movementPowerY));
-            GetComponent<Rigidbody2D>().AddForceAtPosition(new Vector2(movementPowerX, movementPowerY),transform.position);
+            //GetComponent<Rigidbody2D>().AddForceAtPosition(new Vector2(movementPowerX, movementPowerY),transform.position);
             //GetComponent<Rigidbody2D>().AddTorque(movementPowerY);
         }
     }
@@ -103,7 +103,7 @@ public class BirdController : MonoBehaviour {
         if (!isStunned)
         {
             //GetComponent<Rigidbody2D>().AddForce(new Vector2(-movementPowerX, movementPowerY));
-            GetComponent<Rigidbody2D>().AddForceAtPosition(new Vector2(-movementPowerX, movementPowerY), transform.position);
+            //GetComponent<Rigidbody2D>().AddForceAtPosition(new Vector2(-movementPowerX, movementPowerY), transform.position);
             //GetComponent<Rigidbody2D>().AddTorque(movementPowerY);
         }
     }
