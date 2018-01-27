@@ -16,7 +16,6 @@ public class BirdController : MonoBehaviour {
 
     //Shit-related activities
     public GameObject shitPrefab;
-    public Vector3 startPos;
     private GameObject shit;
 
     private bool hasLetter; //If this bird has the letter
@@ -124,7 +123,7 @@ public class BirdController : MonoBehaviour {
     //Drop the bomb
     public void Shit()
     {
-        shit = Instantiate(shitPrefab, startPos, Quaternion.identity);
+        shit = Instantiate(shitPrefab, this.transform.position, Quaternion.identity);
         shit.GetComponent<Renderer>().material.color = Color.white;
     }
 }
