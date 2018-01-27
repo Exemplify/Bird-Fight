@@ -44,7 +44,6 @@ public class FootScript : MonoBehaviour
             Body.GetComponent<BirdController>().letter.GetComponent<Letter>().setOwner(gameObject);
             
             //coll.gameObject.transform.position = transform.position;
-            coll.gameObject.GetComponent<Rigidbody>().useGravity = false;
 
             //coll.gameObject.transform.parent = transform;
             AttachedLetter = coll.gameObject;

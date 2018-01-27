@@ -15,6 +15,7 @@ public class BirdController : MonoBehaviour {
     public bool IsPlaying=false;
     public GameObject LeftFoot;
     public GameObject RightFoot;
+    public int PlayerNumber;
 
 
     //Shit-related activities
@@ -24,6 +25,7 @@ public class BirdController : MonoBehaviour {
     public bool hasLetter; //If this bird has the letter
     public GameObject letter; //The letter game object
     private float timeLeft; //Stun time remaining
+    private float shitTimeLeft; //Stun time remaining
     public bool isStunned; //Status effect for being unable to move
 
     // Use this for initialization
@@ -43,6 +45,17 @@ public class BirdController : MonoBehaviour {
                 {
                     isStunned = false;
                 }
+            }
+
+            if (shitTimeLeft > 0)
+            {
+                shitTimeLeft -= Time.deltaTime;
+            }
+            else if (Input.GetButtonDown("P"+PlayerNumber+"Shit"))
+            {
+                print("Shit");
+                shitTimeLeft = 3;
+                Shit();
             }
         }        
 	}
@@ -141,7 +154,8 @@ public class BirdController : MonoBehaviour {
     //Drop the bomb
     public void Shit()
     {
-        shit = Instantiate(shitPrefab, this.transform.position, Quaternion.identity);
+        shit = Instantiate(shitPrefab, this.transform.position + transform.up.normalized * -1.75f, Quaternion.identity);
         shit.GetComponent<Renderer>().material.color = Color.white;
+        shit.GetComponent<Rigidbody>().AddForce(transform.up * -30, ForceMode.Impulse);
     }
 }
