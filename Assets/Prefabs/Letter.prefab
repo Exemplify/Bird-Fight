@@ -23,10 +23,10 @@ GameObject:
   - component: {fileID: 65348973649414374}
   - component: {fileID: 23160828073845796}
   - component: {fileID: 54565334839948166}
-  - component: {fileID: 95272950898312544}
-  m_Layer: 0
+  - component: {fileID: 114267303355275598}
+  m_Layer: 11
   m_Name: Letter
-  m_TagString: Untagged
+  m_TagString: Mail
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,7 +98,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 56
   m_CollisionDetection: 0
 --- !u!65 &65348973649414374
 BoxCollider:
@@ -112,20 +112,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!95 &95272950898312544
-Animator:
-  serializedVersion: 3
+--- !u!114 &114267303355275598
+MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1864856624428638}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3ea94fe805392184c82a4997a26a0244, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a20faf25d442304a875caa2b2d5925d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Owner: {fileID: 0}
+  hasOwner: 0
