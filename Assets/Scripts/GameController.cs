@@ -37,7 +37,7 @@ public class GameController : MonoBehaviour {
         }
         else if (gamestate == Gamestate.Reset)
         {
-            letter.ResetLetter();
+            letter.LetterRespawn();
             gamestate = Gamestate.Playing;
         }
         else if (gamestate == Gamestate.Gameover)
