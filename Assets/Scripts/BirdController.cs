@@ -5,7 +5,7 @@ using UnityEngine;
 
 //Primary controller for the bird. Contains states for if it has the letter, etc.
 public class BirdController : MonoBehaviour {
-
+    public Players playerNumber;
     public Collider thisCollider; //Reference to this bird's collider
     public float movementPowerX; //The force of horizontal movement applied by each wing
     public float movementPowerY;//The force of vertical movement applied by each wing
@@ -54,15 +54,18 @@ public class BirdController : MonoBehaviour {
             {
                 Debug.Log("Hard hitting stuff!");
                 timeLeft = stunTime;
-
-                if (coll.gameObject.GetComponent<BirdController>().hasMail()) //Does it have the mail?
+                if(GetComponent<Rigidbody>().velocity.magnitude> coll.gameObject.GetComponent<Rigidbody>().velocity.magnitude)
                 {
-                    coll.gameObject.GetComponent<BirdController>().dropMail();
-                    Debug.Log("Bitch had my mail!");
-                }
-                coll.gameObject.GetComponent<BirdController>().applyStun();
-                Vector2 knockback = -GetComponent<Rigidbody>().velocity.normalized * knockbackForce; //Calculate knockback
-                coll.gameObject.GetComponent<Rigidbody>().AddForce(knockback, ForceMode.Impulse); //Change from impulse to force to test effects
+                    if (coll.gameObject.GetComponent<BirdController>().hasMail()) //Does it have the mail?
+                    {
+                        coll.gameObject.GetComponent<BirdController>().dropMail();
+                        Debug.Log("Bitch had my mail!");
+                    }
+                    coll.gameObject.GetComponent<BirdController>().applyStun();
+                    Vector3 knockback = -GetComponent<Rigidbody>().velocity.normalized * knockbackForce; //Calculate knockback
+                    coll.gameObject.GetComponent<Rigidbody>().AddForce(knockback, ForceMode.Impulse); //Change from impulse to force to test effects
+                }            
+                
             }            
         }   
         if (coll.gameObject.tag == "Mail")

@@ -5,14 +5,14 @@ using UnityEngine;
 
 public class ScoreController : MonoBehaviour {
 
-	private List<int> _score;
+	private static List<int> _score= new List<int>(4);
 
-	public List<int> getScores()
+	public static List<int> getScores()
 	{
 		return _score;
 	}
 
-	public void AddScore(Players player)
+	public static void AddScore(Players player)
 	{
 		_score[(int)player]++;
 	}
