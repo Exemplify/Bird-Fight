@@ -63,7 +63,7 @@ public class BirdController : MonoBehaviour {
         {
             this.hasLetter = true;
             letter = coll.gameObject;
-            //letter.GetComponent<Letter>().setOwner(gameObject);            
+            letter.GetComponent<Letter>().setOwner(gameObject);            
         }     
 
     }
@@ -77,7 +77,7 @@ public class BirdController : MonoBehaviour {
     public void dropMail()
     {
         hasLetter = false;
-        //letter.GetComponent<Letter>().Dropped();
+        letter.GetComponent<Letter>().Dropped();
     }
 
     //Apply the stun
