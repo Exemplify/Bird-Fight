@@ -6,7 +6,7 @@ public class FootScript : MonoBehaviour
 {
 
     public GameObject Body;
-    private GameObject AttachedLetter;
+    public GameObject AttachedLetter;
     private Vector3 Offset;
     public float timeLeft;
 
@@ -23,7 +23,7 @@ public class FootScript : MonoBehaviour
         {
             AttachedLetter.transform.position = transform.position + Offset;
             //print(AttachedLetter.transform.position);
-            print(transform.position);
+            //print(transform.position);
         }
 
         if (timeLeft > 0)
@@ -34,10 +34,10 @@ public class FootScript : MonoBehaviour
 
     void OnCollisionEnter(Collision coll)
     {
-        print("Collision");
+        //print("Collision");
         if (coll.gameObject.tag == "Mail" && timeLeft <= 0)
         {
-            print("Mail");
+            //print("Mail");
             Body.GetComponent<BirdController>().hasLetter = true;
             Body.GetComponent<BirdController>().letter = coll.gameObject;
 
