@@ -11,6 +11,7 @@ public class LetterController : MonoBehaviour
 	void Start () 
 	{
 		LetterCurrent = Instantiate (LetterPrefab, StartPosition, Quaternion.identity);
+		LetterCurrent.GetComponent<Renderer> ().material.color = Color.yellow;
 	}
 
 	public void LetterRespawn()
