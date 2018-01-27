@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Shit : MonoBehaviour {
-
-
+   
 
 	// Use this for initialization
 	void Start () {
 		
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -17,7 +16,7 @@ public class Shit : MonoBehaviour {
 	}
 
     //Called upon collision
-    void OnCollisionEnter2D(Collision2D coll)
+    void OnCollisionEnter(Collision coll)
     {
         if (coll.gameObject.tag == "Player") //Check if it is with a bird
         {
@@ -28,10 +27,15 @@ public class Shit : MonoBehaviour {
                coll.gameObject.GetComponent<BirdController>().dropMail();
             Debug.Log("Bitch had my mail!");
             }
-            coll.gameObject.GetComponent<BirdController>().applyStun();            
-        }    
+            coll.gameObject.GetComponent<BirdController>().applyStun();
+            Destroy(gameObject);         
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
 
     }
 
-    //ADD IN DESPAWN CRITERIA
+    
 }

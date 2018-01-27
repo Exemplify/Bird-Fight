@@ -14,6 +14,11 @@ public class BirdController : MonoBehaviour {
     public float knockbackForce;
     public bool IsPlaying=false;
 
+    //Shit-related activities
+    public GameObject shitPrefab;
+    public Vector3 startPos;
+    private GameObject shit;
+
     private bool hasLetter; //If this bird has the letter
     private GameObject letter; //The letter game object
     private float timeLeft; //Stun time remaining
@@ -117,8 +122,9 @@ public class BirdController : MonoBehaviour {
     }
 
     //Drop the bomb
-    public void shit()
+    public void Shit()
     {
-
+        shit = Instantiate(shitPrefab, startPos, Quaternion.identity);
+        shit.GetComponent<Renderer>().material.color = Color.white;
     }
 }
