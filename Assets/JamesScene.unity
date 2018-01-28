@@ -2418,10 +2418,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   birds: []
   Scores:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 903620172}
+  - {fileID: 681627330}
+  - {fileID: 1187241228}
+  - {fileID: 722155707}
   players:
   - {fileID: 512672018}
   - {fileID: 1829732713}
