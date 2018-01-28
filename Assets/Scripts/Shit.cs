@@ -20,15 +20,13 @@ public class Shit : MonoBehaviour {
     {
         if (coll.gameObject.tag == "Player") //Check if it is with a bird
         {
-            Debug.Log("Collision with player");
-            Debug.Log("Someone got shat on!");
             if (coll.gameObject.GetComponent<BirdController>().hasMail()) //Does it have the mail?
             {
                coll.gameObject.GetComponent<BirdController>().dropMail();
-            Debug.Log("Bitch had my mail!");
             }
             coll.gameObject.GetComponent<BirdController>().applyStun();
-            Destroy(gameObject);         
+			coll.gameObject.GetComponent<BirdController>().PoopedSprite();
+			Destroy(gameObject);         
         }
         else
         {

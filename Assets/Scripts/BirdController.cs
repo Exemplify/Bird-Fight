@@ -5,6 +5,7 @@ using UnityEngine;
 
 //Primary controller for the bird. Contains states for if it has the letter, etc.
 public class BirdController : MonoBehaviour {
+
     public Players playerNumber;
     public Collider thisCollider; //Reference to this bird's collider
     public float movementPowerX; //The force of horizontal movement applied by each wing
@@ -17,12 +18,17 @@ public class BirdController : MonoBehaviour {
     public GameObject RightFoot;
     public int PlayerNumber;
 
-
-    //Shit-related activities
-    public GameObject shitPrefab;
+	//Shit-related activities
+	public GameObject shitPrefab;
     private GameObject shit;
 
-    public bool hasLetter; //If this bird has the letter
+	//poop animations
+	public Sprite poopedHat;
+	public Sprite cleanHat;
+	public SpriteRenderer hatSpriteRen;
+	public float PoopedSpriteTime = 3;
+
+	public bool hasLetter; //If this bird has the letter
     public GameObject letter; //The letter game object
     private float timeLeft; //Stun time remaining
     private float shitTimeLeft; //Stun time remaining
@@ -95,7 +101,7 @@ public class BirdController : MonoBehaviour {
                         //}
                     }
                     coll.gameObject.GetComponent<BirdController>().applyStun();
-                    Vector2 knockback = -GetComponent<Rigidbody>().velocity.normalized * knockbackForce; //Calculate knockback
+                    Vector3 knockback = -GetComponent<Rigidbody>().velocity.normalized * knockbackForce; //Calculate knockback
                     coll.gameObject.GetComponent<Rigidbody>().AddForce(knockback, ForceMode.Impulse); //Change from impulse to force to test effects
                 }
             }
@@ -111,8 +117,11 @@ public class BirdController : MonoBehaviour {
     //Dropping the letter
     public void dropMail()
     {
-        hasLetter = false;
-        letter.GetComponent<Letter>().Dropped();
+		if (hasLetter)
+		{
+			hasLetter = false;
+			letter.GetComponent<Letter>().Dropped();
+		}
     }
 
     //Apply the stun
@@ -158,4 +167,15 @@ public class BirdController : MonoBehaviour {
         shit.GetComponent<Renderer>().material.color = Color.white;
         shit.GetComponent<Rigidbody>().AddForce(transform.up * -30, ForceMode.Impulse);
     }
+
+	public void PoopedSprite()
+	{
+		hatSpriteRen.sprite = poopedHat;
+		Invoke("ChangeFromPoopedSprite", PoopedSpriteTime);
+	}
+
+	private void ChangeFromPoopedSprite()
+	{
+		hatSpriteRen.sprite = cleanHat;
+	}
 }
