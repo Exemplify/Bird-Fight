@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour {
 
     public BirdController[] birds;
-    public Text[] Scores;
+    public GameObject[] Scores;
 
     public GameObject[] players=new GameObject[4];
 
@@ -54,7 +54,7 @@ public class GameController : MonoBehaviour {
             if (!players[0].activeSelf)
             {
                 players[0].SetActive(true);
-                Scores[0].enabled = true;
+                Scores[0].SetActive(true);
             }            
         }
         if (Input.GetButtonDown("P2Shit"))
@@ -62,7 +62,7 @@ public class GameController : MonoBehaviour {
             if (!players[1].activeSelf)
             {
                 players[1].SetActive(true);
-                Scores[1].enabled = true;
+                Scores[1].SetActive(true);
             }
         }
         if (Input.GetButtonDown("P3Shit"))
@@ -70,7 +70,7 @@ public class GameController : MonoBehaviour {
             if (!players[2].activeSelf)
             {
                 players[2].SetActive(true);
-                Scores[2].enabled = true;
+                Scores[2].SetActive(true);
             }
         }
         if (Input.GetButtonDown("P4Shit"))
@@ -78,7 +78,7 @@ public class GameController : MonoBehaviour {
             if (!players[3].activeSelf)
             {
                 players[3].SetActive(true);
-                Scores[3].enabled = true;
+                Scores[3].SetActive(true);
             }
         }
 
