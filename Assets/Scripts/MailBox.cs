@@ -23,6 +23,7 @@ public class MailBox : MonoBehaviour {
             controller.GetComponent<ScoreController>().AddScore(other.gameObject.GetComponent<Letter>().Owner.GetComponent<BirdController>().playerNumber);
 
             //Respawn letter
+            other.gameObject.GetComponent<Letter>().Owner.GetComponent<BirdController>().hasLetter = false;
             Destroy(other.gameObject);
             GetComponent<LetterController>().LetterSpawn();
         }
