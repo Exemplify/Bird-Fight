@@ -7,6 +7,8 @@ public class GameController : MonoBehaviour {
 
     public BirdController[] birds;
 
+    public GameObject[] players=new GameObject[4];
+
     public LetterController letter;
 
     public Gamestate gamestate = Gamestate.Reset;
@@ -43,6 +45,36 @@ public class GameController : MonoBehaviour {
         {
             //WIN SCREEN
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }        
-	}
+        }
+
+        if (Input.GetButtonDown("P1Shit"))
+        {
+            if (!players[0].activeSelf)
+            {
+                players[0].SetActive(true);
+            }            
+        }
+        if (Input.GetButtonDown("P2Shit"))
+        {
+            if (!players[1].activeSelf)
+            {
+                players[1].SetActive(true);
+            }
+        }
+        if (Input.GetButtonDown("P3Shit"))
+        {
+            if (!players[2].activeSelf)
+            {
+                players[2].SetActive(true);
+            }
+        }
+        if (Input.GetButtonDown("P4Shit"))
+        {
+            if (!players[3].activeSelf)
+            {
+                players[3].SetActive(true);
+            }
+        }
+
+    }
 }
