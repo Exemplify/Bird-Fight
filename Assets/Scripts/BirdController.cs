@@ -5,6 +5,7 @@ using UnityEngine;
 
 //Primary controller for the bird. Contains states for if it has the letter, etc.
 public class BirdController : MonoBehaviour {
+
     public Players playerNumber;
     public Collider thisCollider; //Reference to this bird's collider
     public float movementPowerX; //The force of horizontal movement applied by each wing
@@ -17,12 +18,17 @@ public class BirdController : MonoBehaviour {
     public GameObject RightFoot;
     public int PlayerNumber;
 
-
-    //Shit-related activities
-    public GameObject shitPrefab;
+	//Shit-related activities
+	public GameObject shitPrefab;
     private GameObject shit;
 
-    public bool hasLetter; //If this bird has the letter
+	//poop animations
+	public Sprite poopedHat;
+	public Sprite cleanHat;
+	public SpriteRenderer hatSpriteRen;
+	public float PoopedSpriteTime = 3;
+
+	public bool hasLetter; //If this bird has the letter
     public GameObject letter; //The letter game object
     private float timeLeft; //Stun time remaining
     private float shitTimeLeft; //Stun time remaining
@@ -30,6 +36,7 @@ public class BirdController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        hatSpriteRen.sprite = cleanHat;
         isStunned = false;
         thisCollider = GetComponent<Collider>();
     }
@@ -54,7 +61,7 @@ public class BirdController : MonoBehaviour {
             else if (Input.GetButtonDown("P"+PlayerNumber+"Shit"))
             {
                 print("Shit");
-                shitTimeLeft = 3;
+                shitTimeLeft = 2;
                 Shit();
             }
         }        
@@ -77,25 +84,25 @@ public class BirdController : MonoBehaviour {
                         coll.gameObject.GetComponent<BirdController>().dropMail();
                         Debug.Log("Bitch had my mail!");
 
-                        coll.gameObject.GetComponent<BirdController>().RightFoot.GetComponent<FootScript>().AttachedLetter = null;
-                        coll.gameObject.GetComponent<BirdController>().LeftFoot.GetComponent<FootScript>().AttachedLetter = null;
+                        //coll.gameObject.GetComponent<BirdController>().RightFoot.GetComponent<FootScript>().AttachedLetter = null;
+                        //coll.gameObject.GetComponent<BirdController>().LeftFoot.GetComponent<FootScript>().AttachedLetter = null;
 
-                        coll.gameObject.GetComponent<BirdController>().RightFoot.GetComponent<FootScript>().timeLeft = 3;
-                        coll.gameObject.GetComponent<BirdController>().LeftFoot.GetComponent<FootScript>().timeLeft = 3;
+                        //coll.gameObject.GetComponent<BirdController>().RightFoot.GetComponent<FootScript>().timeLeft = 3;
+                        //coll.gameObject.GetComponent<BirdController>().LeftFoot.GetComponent<FootScript>().timeLeft = 3;
 
                         letter = coll.gameObject.GetComponent<BirdController>().letter;
 
-                        if (Vector3.Distance(letter.transform.position, LeftFoot.transform.position) < Vector3.Distance(letter.transform.position, RightFoot.transform.position))
-                        {
-                            letter.GetComponent<Rigidbody>().AddForce((LeftFoot.transform.position - letter.transform.position).normalized * 20);
-                        }
-                        else
-                        {
-                            letter.GetComponent<Rigidbody>().AddForce((RightFoot.transform.position - letter.transform.position).normalized * 20);
-                        }
+                        //if (Vector3.Distance(letter.transform.position, LeftFoot.transform.position) < Vector3.Distance(letter.transform.position, RightFoot.transform.position))
+                        //{
+                        //    letter.GetComponent<Rigidbody>().AddForce((LeftFoot.transform.position - letter.transform.position).normalized * 20);
+                        //}
+                        //else
+                        //{
+                        //    letter.GetComponent<Rigidbody>().AddForce((RightFoot.transform.position - letter.transform.position).normalized * 20);
+                        //}
                     }
                     coll.gameObject.GetComponent<BirdController>().applyStun();
-                    Vector2 knockback = -GetComponent<Rigidbody>().velocity.normalized * knockbackForce; //Calculate knockback
+                    Vector3 knockback = -GetComponent<Rigidbody>().velocity.normalized * knockbackForce; //Calculate knockback
                     coll.gameObject.GetComponent<Rigidbody>().AddForce(knockback, ForceMode.Impulse); //Change from impulse to force to test effects
                 }
             }
@@ -111,14 +118,24 @@ public class BirdController : MonoBehaviour {
     //Dropping the letter
     public void dropMail()
     {
-        hasLetter = false;
-        letter.GetComponent<Letter>().Dropped();
+		if (hasLetter)
+		{
+			hasLetter = false;
+			letter.GetComponent<Letter>().Dropped();
+
+            RightFoot.GetComponent<FootScript>().AttachedLetter = null;
+            LeftFoot.GetComponent<FootScript>().AttachedLetter = null;
+
+            RightFoot.GetComponent<FootScript>().timeLeft = 3;
+            LeftFoot.GetComponent<FootScript>().timeLeft = 3;
+        }
     }
 
     //Apply the stun
     public void applyStun()
     {
         isStunned = true;
+        timeLeft = stunTime;
     }
 
     //Movement functions
@@ -156,6 +173,17 @@ public class BirdController : MonoBehaviour {
     {
         shit = Instantiate(shitPrefab, this.transform.position + transform.up.normalized * -1.75f, Quaternion.identity);
         shit.GetComponent<Renderer>().material.color = Color.white;
-        shit.GetComponent<Rigidbody>().AddForce(transform.up * -30, ForceMode.Impulse);
+        shit.GetComponent<Rigidbody>().AddForce(transform.up * -20, ForceMode.Impulse);
     }
+
+	public void PoopedSprite()
+	{
+		hatSpriteRen.sprite = poopedHat;
+		Invoke("ChangeFromPoopedSprite", PoopedSpriteTime);
+	}
+
+	private void ChangeFromPoopedSprite()
+	{
+		hatSpriteRen.sprite = cleanHat;
+	}
 }

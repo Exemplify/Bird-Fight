@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
 
@@ -35,12 +36,13 @@ public class GameController : MonoBehaviour {
         }
         else if (gamestate == Gamestate.Reset)
         {
-            letter.LetterRespawn();
+            //letter.LetterRespawn();
             gamestate = Gamestate.Playing;
         }
         else if (gamestate == Gamestate.Gameover)
         {
             //WIN SCREEN
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }        
 	}
 }
