@@ -20,7 +20,7 @@ public class MailBox : MonoBehaviour {
         if(other.gameObject.tag == "Mail")
         {
             //Debug.Log("Player " + other.gameObject.GetComponent<Letter>().Owner.GetComponent<BirdController>().playerNumber + " has scored!");
-            //controller.GetComponent<ScoreController>().AddScore(other.gameObject.GetComponent<Letter>().Owner.GetComponent<BirdController>().playerNumber);
+            controller.GetComponent<ScoreController>().AddScore(other.gameObject.GetComponent<Letter>().Owner.GetComponent<BirdController>().playerNumber);
 
             //Respawn letter
             Destroy(other.gameObject);

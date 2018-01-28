@@ -85,14 +85,14 @@ public class BirdController : MonoBehaviour {
 
                         letter = coll.gameObject.GetComponent<BirdController>().letter;
 
-                        if (Vector3.Distance(letter.transform.position, LeftFoot.transform.position) < Vector3.Distance(letter.transform.position, RightFoot.transform.position))
-                        {
-                            letter.GetComponent<Rigidbody>().AddForce((LeftFoot.transform.position - letter.transform.position).normalized * 20);
-                        }
-                        else
-                        {
-                            letter.GetComponent<Rigidbody>().AddForce((RightFoot.transform.position - letter.transform.position).normalized * 20);
-                        }
+                        //if (Vector3.Distance(letter.transform.position, LeftFoot.transform.position) < Vector3.Distance(letter.transform.position, RightFoot.transform.position))
+                        //{
+                        //    letter.GetComponent<Rigidbody>().AddForce((LeftFoot.transform.position - letter.transform.position).normalized * 20);
+                        //}
+                        //else
+                        //{
+                        //    letter.GetComponent<Rigidbody>().AddForce((RightFoot.transform.position - letter.transform.position).normalized * 20);
+                        //}
                     }
                     coll.gameObject.GetComponent<BirdController>().applyStun();
                     Vector2 knockback = -GetComponent<Rigidbody>().velocity.normalized * knockbackForce; //Calculate knockback
