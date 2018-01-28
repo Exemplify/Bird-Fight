@@ -447,7 +447,7 @@ HingeJoint:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1910090776564638}
   m_ConnectedBody: {fileID: 54544099689222060}
-  m_Anchor: {x: 0, y: 0.52, z: 0}
+  m_Anchor: {x: 0, y: 0.28, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
   m_ConnectedAnchor: {x: -0.004999995, y: -0.0010001063, z: 0}
@@ -481,7 +481,7 @@ HingeJoint:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1453624236143050}
   m_ConnectedBody: {fileID: 54064890408057056}
-  m_Anchor: {x: 0, y: 0.52, z: 0}
+  m_Anchor: {x: 0, y: 0.28, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
   m_ConnectedAnchor: {x: -0.004999995, y: 0.003000021, z: 0}
