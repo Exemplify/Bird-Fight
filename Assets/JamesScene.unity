@@ -1463,7 +1463,7 @@ Prefab:
     - target: {fileID: 65554607934563702, guid: 518b72cbf4bf9954ba80f333b8ce944a,
         type: 2}
       propertyPath: m_Center.y
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114123915845223996, guid: 518b72cbf4bf9954ba80f333b8ce944a,
         type: 2}
