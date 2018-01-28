@@ -701,6 +701,11 @@ Prefab:
       propertyPath: m_ConnectedAnchor.y
       value: -0.23699999
       objectReference: {fileID: 0}
+    - target: {fileID: 114422731361238570, guid: 657843c9775694845b4b0ca34ec770ac,
+        type: 2}
+      propertyPath: isEnabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 657843c9775694845b4b0ca34ec770ac, type: 2}
   m_IsPrefabParent: 0
@@ -752,6 +757,7 @@ MonoBehaviour:
   LeftFoot: {fileID: 474034641}
   RightFoot: {fileID: 1402170415}
   PlayerNumber: 2
+  isEnabled: 0
   shitPrefab: {fileID: 1561842163780076, guid: fdb055ec56d1d1741af21a13fd05ba2c, type: 2}
   poopedHat: {fileID: 0}
   cleanHat: {fileID: 0}
@@ -1036,6 +1042,11 @@ Transform:
   m_Father: {fileID: 672208472}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &410256408 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1574117039945512, guid: 657843c9775694845b4b0ca34ec770ac,
+    type: 2}
+  m_PrefabInternal: {fileID: 1350982822}
 --- !u!54 &445445179 stripped
 Rigidbody:
   m_PrefabParentObject: {fileID: 54257248774401000, guid: 657843c9775694845b4b0ca34ec770ac,
@@ -1191,6 +1202,11 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 474034641}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &512672018 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1574117039945512, guid: 657843c9775694845b4b0ca34ec770ac,
+    type: 2}
+  m_PrefabInternal: {fileID: 542531467}
 --- !u!1 &526136833
 GameObject:
   m_ObjectHideFlags: 0
@@ -1369,6 +1385,11 @@ Prefab:
         type: 2}
       propertyPath: m_ConnectedAnchor.x
       value: -0.0050001144
+      objectReference: {fileID: 0}
+    - target: {fileID: 114422731361238570, guid: 657843c9775694845b4b0ca34ec770ac,
+        type: 2}
+      propertyPath: isEnabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 657843c9775694845b4b0ca34ec770ac, type: 2}
@@ -1943,6 +1964,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   birds: []
+  players:
+  - {fileID: 512672018}
+  - {fileID: 1829732713}
+  - {fileID: 410256408}
+  - {fileID: 1725604103}
   letter: {fileID: 0}
   gamestate: 1
   winningPlayerNum: 0
@@ -2248,6 +2274,11 @@ Prefab:
       propertyPath: m_Anchor.y
       value: 0.28
       objectReference: {fileID: 0}
+    - target: {fileID: 114422731361238570, guid: 657843c9775694845b4b0ca34ec770ac,
+        type: 2}
+      propertyPath: isEnabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 657843c9775694845b4b0ca34ec770ac, type: 2}
   m_IsPrefabParent: 0
@@ -2446,6 +2477,11 @@ Prefab:
       propertyPath: m_ConnectedAnchor.y
       value: -0.23699999
       objectReference: {fileID: 0}
+    - target: {fileID: 114422731361238570, guid: 657843c9775694845b4b0ca34ec770ac,
+        type: 2}
+      propertyPath: isEnabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 657843c9775694845b4b0ca34ec770ac, type: 2}
   m_IsPrefabParent: 0
@@ -2604,6 +2640,11 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1402170415}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1725604103 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1574117039945512, guid: 657843c9775694845b4b0ca34ec770ac,
+    type: 2}
+  m_PrefabInternal: {fileID: 153656291}
 --- !u!1 &1729594688
 GameObject:
   m_ObjectHideFlags: 0
@@ -2905,6 +2946,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1829732713 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1574117039945512, guid: 657843c9775694845b4b0ca34ec770ac,
+    type: 2}
+  m_PrefabInternal: {fileID: 1131924158}
 --- !u!1 &1857283876
 GameObject:
   m_ObjectHideFlags: 0

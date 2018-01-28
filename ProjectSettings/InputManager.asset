@@ -32,7 +32,7 @@ InputManager:
     gravity: 0
     dead: 0
     sensitivity: 1
-    snap: 1
+    snap: 0
     invert: 0
     type: 2
     axis: 9
@@ -48,7 +48,7 @@ InputManager:
     gravity: 0
     dead: 0
     sensitivity: 1
-    snap: 1
+    snap: 0
     invert: 0
     type: 2
     axis: 8
@@ -64,7 +64,7 @@ InputManager:
     gravity: 0
     dead: 0
     sensitivity: 1
-    snap: 1
+    snap: 0
     invert: 0
     type: 2
     axis: 8
@@ -80,7 +80,7 @@ InputManager:
     gravity: 0
     dead: 0
     sensitivity: 1
-    snap: 1
+    snap: 0
     invert: 0
     type: 2
     axis: 8
@@ -96,7 +96,7 @@ InputManager:
     gravity: 0
     dead: 0
     sensitivity: 1
-    snap: 1
+    snap: 0
     invert: 0
     type: 2
     axis: 9
@@ -112,7 +112,7 @@ InputManager:
     gravity: 0
     dead: 0
     sensitivity: 1
-    snap: 1
+    snap: 0
     invert: 0
     type: 2
     axis: 9
@@ -128,7 +128,7 @@ InputManager:
     gravity: 0
     dead: 0
     sensitivity: 1
-    snap: 1
+    snap: 0
     invert: 0
     type: 2
     axis: 9
