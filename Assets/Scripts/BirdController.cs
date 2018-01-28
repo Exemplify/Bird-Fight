@@ -18,6 +18,8 @@ public class BirdController : MonoBehaviour {
     public GameObject RightFoot;
     public int PlayerNumber;
 
+    public bool isEnabled = false;
+
 	//Shit-related activities
 	public GameObject shitPrefab;
     private GameObject shit;
@@ -39,6 +41,7 @@ public class BirdController : MonoBehaviour {
         hatSpriteRen.sprite = cleanHat;
         isStunned = false;
         thisCollider = GetComponent<Collider>();
+        this.gameObject.SetActive(isEnabled);
     }
 	
 	// Update is called once per frame
@@ -130,6 +133,8 @@ public class BirdController : MonoBehaviour {
             LeftFoot.GetComponent<FootScript>().timeLeft = 3;
         }
     }
+
+    
 
     //Apply the stun
     public void applyStun()
