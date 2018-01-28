@@ -40,6 +40,11 @@ public class TriggerScript : MonoBehaviour {
                     ForceDirection = ForceDirection.normalized * Lift;
                     Body.GetComponent<Rigidbody>().AddForce(ForceDirection);
                     Body.GetComponent<RotateScript>().IncrementClockwise(-1f);
+
+                    if ((Body.transform.eulerAngles.z < 1 && Body.transform.eulerAngles.z > -1) || Body.transform.eulerAngles.z > 359)
+                    {
+                        Body.GetComponent<RotateScript>().IncrementClockwise(-1f);
+                    }
                 }
             }
             else
@@ -52,6 +57,11 @@ public class TriggerScript : MonoBehaviour {
                     ForceDirection = ForceDirection.normalized * Lift;
                     Body.GetComponent<Rigidbody>().AddForce(ForceDirection);
                     Body.GetComponent<RotateScript>().IncrementClockwise(1f);
+
+                    if ((Body.transform.eulerAngles.z < 1 && Body.transform.eulerAngles.z > -1) || Body.transform.eulerAngles.z > 359)
+                    {
+                        Body.GetComponent<RotateScript>().IncrementClockwise(1f);
+                    }
                 }
             }
 
