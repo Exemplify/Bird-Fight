@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Rewired;
 
 public class GameController : MonoBehaviour {
 
@@ -10,6 +11,7 @@ public class GameController : MonoBehaviour {
     public GameObject[] Scores;
 
     public GameObject[] players=new GameObject[4];
+    public Player[] playerCon = new Player[4];
 
     public LetterController letter;
 
@@ -18,9 +20,12 @@ public class GameController : MonoBehaviour {
     private float timerLevelStart;
     private float levelStartPeriod;
     public int winningPlayerNum;
-    void Start ()
+    void Awake ()
     {
-		
+        for (var i = 0; i < playerCon.Length; ++i)
+        {
+            playerCon[i] = ReInput.players.GetPlayer(i);
+        }
 	}
 	
 	// Update is called once per frame
@@ -49,36 +54,15 @@ public class GameController : MonoBehaviour {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
-        if (Input.GetButtonDown("P1Shit"))
+        for (var i = 0; i < playerCon.Length; ++i)
         {
-            if (!players[0].activeSelf)
+            if (playerCon[i].GetButtonDown("Fire"))
             {
-                players[0].SetActive(true);
-                Scores[0].SetActive(true);
-            }            
-        }
-        if (Input.GetButtonDown("P2Shit"))
-        {
-            if (!players[1].activeSelf)
-            {
-                players[1].SetActive(true);
-                Scores[1].SetActive(true);
-            }
-        }
-        if (Input.GetButtonDown("P3Shit"))
-        {
-            if (!players[2].activeSelf)
-            {
-                players[2].SetActive(true);
-                Scores[2].SetActive(true);
-            }
-        }
-        if (Input.GetButtonDown("P4Shit"))
-        {
-            if (!players[3].activeSelf)
-            {
-                players[3].SetActive(true);
-                Scores[3].SetActive(true);
+                if (!players[i].activeSelf)
+                {
+                    players[i].SetActive(true);
+                    Scores[i].SetActive(true);
+                }
             }
         }
 

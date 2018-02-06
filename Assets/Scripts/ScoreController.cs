@@ -16,7 +16,6 @@ public class ScoreController : MonoBehaviour {
 
 	public void AddScore(Players player)
 	{
-        print((int)player);
 		_score[(int)player]++;
         //print("Player " + (int)player + " score: " + _score[(int)player]);
 
