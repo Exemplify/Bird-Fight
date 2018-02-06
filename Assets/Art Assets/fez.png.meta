@@ -1,9 +1,11 @@
 fileFormatVersion: 2
 guid: 84a7d18f3e4f8bb49b5fe9ec63c318b3
-timeCreated: 1517088708
+timeCreated: 1517931631
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: fez_0
+    21300002: fez_1
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -49,7 +51,7 @@ TextureImporter:
   spritePixelsToUnits: 100
   alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: -1
+  spriteTessellationDetail: 0
   textureType: 8
   textureShape: 1
   maxTextureSizeSet: 0
@@ -78,9 +80,59 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
-    outline: []
-    physicsShape: []
+    sprites:
+    - serializedVersion: 2
+      name: fez_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 93
+        width: 34
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fez_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 43
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    outline:
+    - - {x: -15.5, y: -38.5}
+      - {x: -15.5, y: -64.5}
+      - {x: 29.5, y: -64.5}
+      - {x: 29.5, y: -38.5}
+    - - {x: -8.5, y: 64.5}
+      - {x: -26.5, y: 64.5}
+      - {x: -29.5, y: 63.5}
+      - {x: -29.5, y: 26.5}
+      - {x: 3.5, y: 26.5}
+      - {x: 6.5, y: 35.5}
+      - {x: 6.5, y: 55.5}
+    physicsShape:
+    - - {x: -15.5, y: -38.5}
+      - {x: -15.5, y: -64.5}
+      - {x: 29.5, y: -64.5}
+      - {x: 29.5, y: -38.5}
+    - - {x: -8.5, y: 64.5}
+      - {x: -26.5, y: 64.5}
+      - {x: -29.5, y: 63.5}
+      - {x: -29.5, y: 26.5}
+      - {x: 3.5, y: 26.5}
+      - {x: 6.5, y: 35.5}
+      - {x: 6.5, y: 55.5}
   spritePackingTag: 
   userData: 
   assetBundleName: 

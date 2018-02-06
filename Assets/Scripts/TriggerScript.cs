@@ -1,44 +1,55 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Rewired;
 
 public class TriggerScript : MonoBehaviour {
 
     public GameObject WingAnchor;
     public GameObject Body;
-    public string PlayerNum;
     public string WingSide;
     public float Lift;
 
-    private float TriggerValue;
-    private float LastTriggerValue;
-    private float BodyRotation;
+    private int playerId = 0; // The Rewired player id of this character
+    private Player player;
 
-    // Use this for initialization
-    void Start () {
-	}
+    private float TriggerValue = 0;
+    private float LastTriggerValue = 0;
+    private float BodyRotation = 0;
+    private BirdController birdCon;
 
+
+    void Awake ()
+    {
+        birdCon = Body.GetComponent<BirdController>();
+        playerId = birdCon.playerId;
+        // Get the Rewired Player object for this player and keep it for the duration of the character's lifetime
+        player = ReInput.players.GetPlayer(playerId);
+    }
+
+    private void Start()
+    {
+        birdCon = Body.GetComponent<BirdController>();
+        playerId = birdCon.playerId;
+    }
     // Update is called once per frame
     void Update()
     {
-        if (!Body.GetComponent<BirdController>().isStunned)
+        TriggerValue = 0;
+
+        if (!birdCon.isStunned)
         {
-            TriggerValue = Input.GetAxis("P" + PlayerNum + WingSide);
             BodyRotation = Body.transform.rotation.eulerAngles.z;
-            print(TriggerValue);
 
             if (WingSide.Equals("Right"))
             {
-                Vector3 offset = WingAnchor.transform.parent.position;
-                offset += new Vector3(0.5f, 0, 0);
+                TriggerValue = player.GetAxis("Flap Right");
 
                 WingAnchor.transform.rotation = Quaternion.Euler(0, 0, BodyRotation - 180 - 60 * (-0.5f + TriggerValue));
 
                 if (LastTriggerValue + 0.1 < TriggerValue)
                 {
-                    print("P" + PlayerNum + WingSide);
 
-                    //Body.GetComponent<Rigidbody>().AddForceAtPosition(new Vector3(-2, 30, 0), Body.transform.position + new Vector3(0.5f, 0, 0));
                     Vector3 ForceDirection = Body.transform.up;
                     ForceDirection = ForceDirection.normalized * Lift;
                     Body.GetComponent<Rigidbody>().AddForce(ForceDirection);
@@ -50,14 +61,15 @@ public class TriggerScript : MonoBehaviour {
                     }
                 }
             }
-            else
+            
+            if(WingSide.Equals("Left"))
             {
+                TriggerValue = player.GetAxis("Flap Left");
+
                 WingAnchor.transform.rotation = Quaternion.Euler(0, 0, BodyRotation + 60 * (-0.5f + TriggerValue));
                 if (LastTriggerValue + 0.1 < TriggerValue)
                 {
-                    print("P" + PlayerNum + WingSide);
 
-                    //WingAnchor.transform.parent.GetComponent<Rigidbody>().AddForceAtPosition(new Vector3(2, 30, 0), Body.transform.position + new Vector3(-0.5f, 0, 0));
                     Vector3 ForceDirection = Body.transform.up;
                     ForceDirection = ForceDirection.normalized * Lift;
                     Body.GetComponent<Rigidbody>().AddForce(ForceDirection);

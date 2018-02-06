@@ -7,18 +7,12 @@ public class RotateScript : MonoBehaviour {
     public GameObject Body;
     public float RotationAmount;
 
-    // Use this for initialization
-    void Start()
-    {
-    }
 
     // Update is called once per frame
     void Update()
     {
         Body.transform.Rotate(new Vector3(0, 0, 1), RotationAmount);
 
-        //print(Body.transform.rotation.eulerAngles.z);
-        //print("Rotation: " + RotationAmount);
 
         if (RotationAmount < 0)
         {
@@ -31,10 +25,8 @@ public class RotateScript : MonoBehaviour {
 
         if (((Body.transform.eulerAngles.z < 1 && Body.transform.eulerAngles.z > -1) || Body.transform.eulerAngles.z > 359) && RotationAmount < 2 && RotationAmount > -2)
         {
-            //print("Bracket: " + Body.transform.rotation.eulerAngles.z);
             Body.transform.rotation.eulerAngles.Set(0, 0, 0);
             RotationAmount = 0;
-            //print("Bracket 2: " + Body.transform.rotation.eulerAngles.z);
         }
         else
         {

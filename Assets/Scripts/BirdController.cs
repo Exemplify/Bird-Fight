@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Rewired;
 
 
 //Primary controller for the bird. Contains states for if it has the letter, etc.
@@ -17,6 +18,8 @@ public class BirdController : MonoBehaviour {
     public GameObject LeftFoot;
     public GameObject RightFoot;
     public int PlayerNumber;
+    public int playerId;
+    private Player player;
 
     public bool isEnabled = false;
 
@@ -36,12 +39,17 @@ public class BirdController : MonoBehaviour {
     private float shitTimeLeft; //Stun time remaining
     public bool isStunned; //Status effect for being unable to move
 
+    private void Awake()
+    {
+        // Get the Rewired Player object for this player and keep it for the duration of the character's lifetime
+        player = ReInput.players.GetPlayer(playerId);
+    }
     // Use this for initialization
     void Start () {
         hatSpriteRen.sprite = cleanHat;
         isStunned = false;
         thisCollider = GetComponent<Collider>();
-        this.gameObject.SetActive(isEnabled);
+        gameObject.SetActive(isEnabled);
     }
 	
 	// Update is called once per frame
@@ -61,9 +69,9 @@ public class BirdController : MonoBehaviour {
             {
                 shitTimeLeft -= Time.deltaTime;
             }
-            else if (Input.GetButtonDown("P"+PlayerNumber+"Shit"))
+            bool fire = player.GetButtonDown("Fire");
+            if(fire)
             {
-                print("Shit");
                 shitTimeLeft = 2;
                 Shit();
             }
@@ -75,34 +83,19 @@ public class BirdController : MonoBehaviour {
     {
         if (coll.gameObject.tag == "Player") //Check if it is another bird
         {
-            Debug.Log("Collision with player");
+           
             if (coll.relativeVelocity.magnitude > transferMagnitude) //If so, did you hit it hard enough to get the letter?
             {
-                Debug.Log("Hard hitting stuff!");
+                
                 timeLeft = stunTime;
                 if (GetComponent<Rigidbody>().velocity.magnitude > coll.gameObject.GetComponent<Rigidbody>().velocity.magnitude)
                 {
                     if (coll.gameObject.GetComponent<BirdController>().hasMail()) //Does it have the mail?
                     {
                         coll.gameObject.GetComponent<BirdController>().dropMail();
-                        Debug.Log("Bitch had my mail!");
-
-                        //coll.gameObject.GetComponent<BirdController>().RightFoot.GetComponent<FootScript>().AttachedLetter = null;
-                        //coll.gameObject.GetComponent<BirdController>().LeftFoot.GetComponent<FootScript>().AttachedLetter = null;
-
-                        //coll.gameObject.GetComponent<BirdController>().RightFoot.GetComponent<FootScript>().timeLeft = 3;
-                        //coll.gameObject.GetComponent<BirdController>().LeftFoot.GetComponent<FootScript>().timeLeft = 3;
-
+                       
                         letter = coll.gameObject.GetComponent<BirdController>().letter;
 
-                        //if (Vector3.Distance(letter.transform.position, LeftFoot.transform.position) < Vector3.Distance(letter.transform.position, RightFoot.transform.position))
-                        //{
-                        //    letter.GetComponent<Rigidbody>().AddForce((LeftFoot.transform.position - letter.transform.position).normalized * 20);
-                        //}
-                        //else
-                        //{
-                        //    letter.GetComponent<Rigidbody>().AddForce((RightFoot.transform.position - letter.transform.position).normalized * 20);
-                        //}
                     }
                     coll.gameObject.GetComponent<BirdController>().applyStun();
                     Vector3 knockback = -GetComponent<Rigidbody>().velocity.normalized * knockbackForce; //Calculate knockback
@@ -143,35 +136,7 @@ public class BirdController : MonoBehaviour {
         timeLeft = stunTime;
     }
 
-    //Movement functions
-
-    public void rightWing()
-    {
-        if (!isStunned)
-        {
-            //GetComponent<Rigidbody2D>().AddForce(new Vector2(movementPowerX, movementPowerY));
-            //GetComponent<Rigidbody2D>().AddForceAtPosition(new Vector2(movementPowerX, movementPowerY),transform.position);
-            //GetComponent<Rigidbody2D>().AddTorque(movementPowerY);
-        }
-    }
-
-    public void leftWing()
-    {
-        if (!isStunned)
-        {
-            //GetComponent<Rigidbody2D>().AddForce(new Vector2(-movementPowerX, movementPowerY));
-            //GetComponent<Rigidbody2D>().AddForceAtPosition(new Vector2(-movementPowerX, movementPowerY), transform.position);
-            //GetComponent<Rigidbody2D>().AddTorque(movementPowerY);
-        }
-    }
-
     //Mechanics
-
-    //Mad dash
-    public void dash()
-    {
-
-    }
 
     //Drop the bomb
     public void Shit()
