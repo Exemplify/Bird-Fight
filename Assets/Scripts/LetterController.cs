@@ -29,6 +29,6 @@ public class LetterController : MonoBehaviour
     public void LetterSpawn()
     {
         LetterCurrent = Instantiate(LetterPrefab, StartPosition, Quaternion.identity);
-        LetterCurrent.GetComponent<Renderer>().material.color = Color.yellow;
+        LetterCurrent.GetComponent<Renderer>().material.color = Color.white;
     }
 }

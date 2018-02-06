@@ -25,6 +25,7 @@ public class TriggerScript : MonoBehaviour {
         {
             TriggerValue = Input.GetAxis("P" + PlayerNum + WingSide);
             BodyRotation = Body.transform.rotation.eulerAngles.z;
+            print(TriggerValue);
 
             if (WingSide.Equals("Right"))
             {
@@ -35,11 +36,18 @@ public class TriggerScript : MonoBehaviour {
 
                 if (LastTriggerValue + 0.1 < TriggerValue)
                 {
+                    print("P" + PlayerNum + WingSide);
+
                     //Body.GetComponent<Rigidbody>().AddForceAtPosition(new Vector3(-2, 30, 0), Body.transform.position + new Vector3(0.5f, 0, 0));
                     Vector3 ForceDirection = Body.transform.up;
                     ForceDirection = ForceDirection.normalized * Lift;
                     Body.GetComponent<Rigidbody>().AddForce(ForceDirection);
                     Body.GetComponent<RotateScript>().IncrementClockwise(-1f);
+
+                    if ((Body.transform.eulerAngles.z < 1 && Body.transform.eulerAngles.z > -1) || Body.transform.eulerAngles.z > 359)
+                    {
+                        Body.GetComponent<RotateScript>().IncrementClockwise(-1f);
+                    }
                 }
             }
             else
@@ -47,11 +55,18 @@ public class TriggerScript : MonoBehaviour {
                 WingAnchor.transform.rotation = Quaternion.Euler(0, 0, BodyRotation + 60 * (-0.5f + TriggerValue));
                 if (LastTriggerValue + 0.1 < TriggerValue)
                 {
+                    print("P" + PlayerNum + WingSide);
+
                     //WingAnchor.transform.parent.GetComponent<Rigidbody>().AddForceAtPosition(new Vector3(2, 30, 0), Body.transform.position + new Vector3(-0.5f, 0, 0));
                     Vector3 ForceDirection = Body.transform.up;
                     ForceDirection = ForceDirection.normalized * Lift;
                     Body.GetComponent<Rigidbody>().AddForce(ForceDirection);
                     Body.GetComponent<RotateScript>().IncrementClockwise(1f);
+
+                    if ((Body.transform.eulerAngles.z < 1 && Body.transform.eulerAngles.z > -1) || Body.transform.eulerAngles.z > 359)
+                    {
+                        Body.GetComponent<RotateScript>().IncrementClockwise(1f);
+                    }
                 }
             }
 

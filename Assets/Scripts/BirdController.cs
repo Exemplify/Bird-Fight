@@ -18,6 +18,8 @@ public class BirdController : MonoBehaviour {
     public GameObject RightFoot;
     public int PlayerNumber;
 
+    public bool isEnabled = false;
+
 	//Shit-related activities
 	public GameObject shitPrefab;
     private GameObject shit;
@@ -36,8 +38,10 @@ public class BirdController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        hatSpriteRen.sprite = cleanHat;
         isStunned = false;
         thisCollider = GetComponent<Collider>();
+        this.gameObject.SetActive(isEnabled);
     }
 	
 	// Update is called once per frame
@@ -60,7 +64,7 @@ public class BirdController : MonoBehaviour {
             else if (Input.GetButtonDown("P"+PlayerNumber+"Shit"))
             {
                 print("Shit");
-                shitTimeLeft = 3;
+                shitTimeLeft = 2;
                 Shit();
             }
         }        
@@ -83,22 +87,22 @@ public class BirdController : MonoBehaviour {
                         coll.gameObject.GetComponent<BirdController>().dropMail();
                         Debug.Log("Bitch had my mail!");
 
-                        coll.gameObject.GetComponent<BirdController>().RightFoot.GetComponent<FootScript>().AttachedLetter = null;
-                        coll.gameObject.GetComponent<BirdController>().LeftFoot.GetComponent<FootScript>().AttachedLetter = null;
+                        //coll.gameObject.GetComponent<BirdController>().RightFoot.GetComponent<FootScript>().AttachedLetter = null;
+                        //coll.gameObject.GetComponent<BirdController>().LeftFoot.GetComponent<FootScript>().AttachedLetter = null;
 
-                        coll.gameObject.GetComponent<BirdController>().RightFoot.GetComponent<FootScript>().timeLeft = 3;
-                        coll.gameObject.GetComponent<BirdController>().LeftFoot.GetComponent<FootScript>().timeLeft = 3;
+                        //coll.gameObject.GetComponent<BirdController>().RightFoot.GetComponent<FootScript>().timeLeft = 3;
+                        //coll.gameObject.GetComponent<BirdController>().LeftFoot.GetComponent<FootScript>().timeLeft = 3;
 
                         letter = coll.gameObject.GetComponent<BirdController>().letter;
 
-                        if (Vector3.Distance(letter.transform.position, LeftFoot.transform.position) < Vector3.Distance(letter.transform.position, RightFoot.transform.position))
-                        {
-                            letter.GetComponent<Rigidbody>().AddForce((LeftFoot.transform.position - letter.transform.position).normalized * 20);
-                        }
-                        else
-                        {
-                            letter.GetComponent<Rigidbody>().AddForce((RightFoot.transform.position - letter.transform.position).normalized * 20);
-                        }
+                        //if (Vector3.Distance(letter.transform.position, LeftFoot.transform.position) < Vector3.Distance(letter.transform.position, RightFoot.transform.position))
+                        //{
+                        //    letter.GetComponent<Rigidbody>().AddForce((LeftFoot.transform.position - letter.transform.position).normalized * 20);
+                        //}
+                        //else
+                        //{
+                        //    letter.GetComponent<Rigidbody>().AddForce((RightFoot.transform.position - letter.transform.position).normalized * 20);
+                        //}
                     }
                     coll.gameObject.GetComponent<BirdController>().applyStun();
                     Vector3 knockback = -GetComponent<Rigidbody>().velocity.normalized * knockbackForce; //Calculate knockback
@@ -121,13 +125,22 @@ public class BirdController : MonoBehaviour {
 		{
 			hasLetter = false;
 			letter.GetComponent<Letter>().Dropped();
-		}
+
+            RightFoot.GetComponent<FootScript>().AttachedLetter = null;
+            LeftFoot.GetComponent<FootScript>().AttachedLetter = null;
+
+            RightFoot.GetComponent<FootScript>().timeLeft = 3;
+            LeftFoot.GetComponent<FootScript>().timeLeft = 3;
+        }
     }
+
+    
 
     //Apply the stun
     public void applyStun()
     {
         isStunned = true;
+        timeLeft = stunTime;
     }
 
     //Movement functions
@@ -165,7 +178,7 @@ public class BirdController : MonoBehaviour {
     {
         shit = Instantiate(shitPrefab, this.transform.position + transform.up.normalized * -1.75f, Quaternion.identity);
         shit.GetComponent<Renderer>().material.color = Color.white;
-        shit.GetComponent<Rigidbody>().AddForce(transform.up * -30, ForceMode.Impulse);
+        shit.GetComponent<Rigidbody>().AddForce(transform.up * -20, ForceMode.Impulse);
     }
 
 	public void PoopedSprite()
