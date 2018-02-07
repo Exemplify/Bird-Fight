@@ -24,8 +24,7 @@ public class Shit : MonoBehaviour {
             {
                coll.gameObject.GetComponent<BirdController>().dropMail();
             }
-            coll.gameObject.GetComponent<BirdController>().applyStun();
-			
+            coll.gameObject.GetComponent<BirdController>().applyStun();			
             Instantiate(SplatterPrefab, transform.position, Quaternion.Euler(0, 180, 0));
             coll.gameObject.GetComponent<BirdController>().PoopedSprite();
             Destroy(gameObject);         

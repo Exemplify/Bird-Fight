@@ -51,12 +51,15 @@ TagManager:
   - name: letter
     uniqueID: 3332703655
     locked: 0
-  - name: Player
-    uniqueID: 2117054195
-    locked: 0
   - name: poop
     uniqueID: 3133443455
     locked: 0
+  - name: Player
+    uniqueID: 2117054195
+    locked: 0
   - name: hats
     uniqueID: 746643775
+    locked: 0
+  - name: Particles
+    uniqueID: 1458045147
     locked: 0
