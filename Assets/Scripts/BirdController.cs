@@ -20,6 +20,7 @@ public class BirdController : MonoBehaviour {
     public int PlayerNumber;
     public int playerId;
     private Player player;
+    public GameObject featherPrefab;
 
     public bool isEnabled = false;
 
@@ -78,7 +79,13 @@ public class BirdController : MonoBehaviour {
         }        
 	}
 
-    //Called upon collision
+
+
+    #region Collision Properties
+    
+    [SerializeField] 
+    private float CollisionBufferSpeed;
+
     void OnCollisionEnter(Collision coll)
     {
         if (coll.gameObject.tag == "Player") //Check if it is another bird
@@ -86,10 +93,13 @@ public class BirdController : MonoBehaviour {
            
             if (coll.relativeVelocity.magnitude > transferMagnitude) //If so, did you hit it hard enough to get the letter?
             {
-                
+                var speed = GetComponent<Rigidbody>().velocity.magnitude;
                 timeLeft = stunTime;
-                if (GetComponent<Rigidbody>().velocity.magnitude > coll.gameObject.GetComponent<Rigidbody>().velocity.magnitude)
+                if (( speed > coll.gameObject.GetComponent<Rigidbody>().velocity.magnitude) && speed > CollisionBufferSpeed)
                 {
+                    ContactPoint contact = coll.contacts[0];
+                    FeatherParticleEffect(contact.point);
+
                     if (coll.gameObject.GetComponent<BirdController>().hasMail()) //Does it have the mail?
                     {
                         coll.gameObject.GetComponent<BirdController>().dropMail();
@@ -105,6 +115,7 @@ public class BirdController : MonoBehaviour {
 
         }
     }
+
 
     //Check if this bird has the letter
     public bool hasMail() {
@@ -127,7 +138,6 @@ public class BirdController : MonoBehaviour {
         }
     }
 
-    
 
     //Apply the stun
     public void applyStun()
@@ -136,8 +146,9 @@ public class BirdController : MonoBehaviour {
         timeLeft = stunTime;
     }
 
-    //Mechanics
+    #endregion
 
+    #region Projectile Feces 
     //Drop the bomb
     public void Shit()
     {
@@ -156,4 +167,25 @@ public class BirdController : MonoBehaviour {
 	{
 		hatSpriteRen.sprite = cleanHat;
 	}
+    #endregion
+
+    #region Juice and Particles 
+    private bool feathersExist;
+    private float featherDelay;
+
+    private void SetFeatherFalse()
+    {
+        feathersExist = false;
+    }
+    private void FeatherParticleEffect(Vector3 spawnPosition)
+    {
+        if (!feathersExist)
+        {
+            feathersExist = true;
+
+            Instantiate(featherPrefab, spawnPosition, Quaternion.Euler(0, 180, 0));
+            Invoke("SetFeatherFalse", 1);
+        }
+    }
+    #endregion
 }
