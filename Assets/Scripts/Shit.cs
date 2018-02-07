@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Shit : MonoBehaviour {
-   
 
+    public GameObject SplatterPrefab;
 	// Use this for initialization
 	void Start () {
 		
@@ -25,8 +25,10 @@ public class Shit : MonoBehaviour {
                coll.gameObject.GetComponent<BirdController>().dropMail();
             }
             coll.gameObject.GetComponent<BirdController>().applyStun();
-			coll.gameObject.GetComponent<BirdController>().PoopedSprite();
-			Destroy(gameObject);         
+			
+            Instantiate(SplatterPrefab, transform.position, Quaternion.Euler(0, 180, 0));
+            coll.gameObject.GetComponent<BirdController>().PoopedSprite();
+            Destroy(gameObject);         
         }
         else
         {
