@@ -47,6 +47,7 @@ public class BirdController : MonoBehaviour {
     }
     // Use this for initialization
     void Start () {
+        audio_source = GetComponent<AudioSource>();
         hatSpriteRen.sprite = cleanHat;
         isStunned = false;
         thisCollider = GetComponent<Collider>();
@@ -149,12 +150,26 @@ public class BirdController : MonoBehaviour {
     #endregion
 
     #region Projectile Feces 
+    [Header("Poop Audio Files")]
+    public AudioClip[] poop_sounds;
+    private AudioSource audio_source;
+
+    private void ShitAudio()
+    {
+        audio_source.Stop();
+        int randomNum = Random.Range(0, 2);
+        audio_source.clip = poop_sounds[randomNum];
+        audio_source.Play();
+    }
     //Drop the bomb
+    public float shitForceUp = 2;
     public void Shit()
     {
         shit = Instantiate(shitPrefab, this.transform.position + transform.up.normalized * -1.75f, Quaternion.identity);
         shit.GetComponent<Renderer>().material.color = Color.white;
         shit.GetComponent<Rigidbody>().AddForce(transform.up * -20, ForceMode.Impulse);
+        GetComponent<Rigidbody>().AddForce(transform.up * shitForceUp, ForceMode.Impulse);
+        ShitAudio();
     }
 
 	public void PoopedSprite()

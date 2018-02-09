@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: ae398c58ab4977748983fc4214bc64b9
+timeCreated: 1484749289
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: '!Sketchy Times'
+  fontNames:
+  - '!Sketchy Times'
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 1d145cbf2f84e3846aee01720a3f110a, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

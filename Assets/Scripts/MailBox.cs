@@ -25,7 +25,7 @@ public class MailBox : MonoBehaviour {
             //Respawn letter
             other.gameObject.GetComponent<Letter>().Owner.GetComponent<BirdController>().hasLetter = false;
             Destroy(other.gameObject);
-            GetComponent<LetterController>().LetterSpawn();
+            GameObject.Find("GameController").GetComponent<LetterController>().LetterSpawn();
         }
     }
 }

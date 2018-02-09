@@ -8,29 +8,32 @@ using Rewired;
 public class GameController : MonoBehaviour {
 
     public BirdController[] birds;
-    public GameObject[] Scores;
 
-    public GameObject[] players=new GameObject[4];
+
+    public GameObject[] players = new GameObject[4];
     public Player[] playerCon = new Player[4];
 
     public LetterController letter;
 
+    private bool isInMenu = true;
     public Gamestate gamestate = Gamestate.Reset;
 
     private float timerLevelStart;
     private float levelStartPeriod;
     public int winningPlayerNum;
-    void Awake ()
+    void Awake()
     {
         for (var i = 0; i < playerCon.Length; ++i)
         {
             playerCon[i] = ReInput.players.GetPlayer(i);
         }
-	}
-	
-	// Update is called once per frame
-	void Update ()
+    }
+
+    // Update is called once per frame
+    void Update()
     {
+        CloseMenu();
+
         if (gamestate == Gamestate.Playing)
         {
             timerLevelStart += Time.deltaTime;
@@ -54,17 +57,55 @@ public class GameController : MonoBehaviour {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
-        for (var i = 0; i < playerCon.Length; ++i)
+        if (!isInMenu)
         {
-            if (playerCon[i].GetButtonDown("Fire"))
+            for (var i = 0; i < playerCon.Length; ++i)
             {
-                if (!players[i].activeSelf)
+                if (playerCon[i].GetButtonDown("Fire"))
                 {
-                    players[i].SetActive(true);
-                    Scores[i].SetActive(true);
+                    if (!players[i].activeSelf)
+                    {
+                        players[i].SetActive(true);
+                        Scores[i].SetActive(true);
+                        Tooltips[i].SetActive(false);
+                        if (!playerInGame)
+                        {
+                            musicSource.clip = gameMusic;
+                            musicSource.Play();
+                            playerInGame = true;
+                        }
+
+                    }
                 }
             }
         }
 
     }
+
+    #region Sound and GUI Control
+
+    [Header("Background Music")]
+    public AudioSource musicSource;
+    public AudioClip gameMusic;
+    [Header("GUI Objects")]
+    public GameObject menuPanel;
+    public GameObject[] Scores;
+    public GameObject[] Tooltips;
+
+    //private variables
+    private bool playerInGame = false;
+
+    public void CloseMenu()
+    {
+
+        if (isInMenu && playerCon[0].GetButtonDown("Start") )
+        {
+            isInMenu = false;
+            menuPanel.SetActive(false);
+            GetComponent<LetterController>().LetterSpawn();
+            foreach (GameObject GO in Tooltips)
+                GO.SetActive(true);
+        }
+    }
+#endregion
 }

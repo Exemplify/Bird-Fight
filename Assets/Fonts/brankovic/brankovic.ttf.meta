@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 61543645678e0cf468326bcef4ceb87e
+timeCreated: 1484749289
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Brankovic
+  fontNames:
+  - Brankovic
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

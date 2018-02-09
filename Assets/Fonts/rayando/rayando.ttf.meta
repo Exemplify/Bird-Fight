@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: ba6c7ce8beee3f64cb0938ebc369f92d
+timeCreated: 1484749289
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: rayando
+  fontNames:
+  - rayando
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 7272bcef16d5d9348b6d8d2e4e085c4c
+timeCreated: 1484749289
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Fabian
+  fontNames:
+  - Fabian
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 08972b16315374d418ae681867933b59, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

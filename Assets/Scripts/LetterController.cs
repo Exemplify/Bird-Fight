@@ -8,11 +8,6 @@ public class LetterController : MonoBehaviour
     public Vector3 StartPosition;
     private GameObject LetterCurrent;
 
-    void Start()
-    {
-        LetterSpawn();
-    }
-
     public void LetterRespawn()
     {
         LetterCurrent.SetActive(false);
